@@ -3,6 +3,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Yelfra ignores
+*.vcxproj
+# NoteSense/x64/
+
+
 # User-specific files
 *.rsuser
 *.suo
@@ -17,20 +22,20 @@
 mono_crash.*
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-[Ww][Ii][Nn]32/
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
-bld/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-[Ll]ogs/
+#[Dd]ebug/
+#[Dd]ebugPublic/
+#[Rr]elease/
+#[Rr]eleases/
+NoteSense/x64/
+NoteSense/x86/
+#[Ww][Ii][Nn]32/
+#[Aa][Rr][Mm]/
+#[Aa][Rr][Mm]64/
+#bld/
+#[Bb]in/
+#[Oo]bj/
+#[Ll]og/
+#[Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -396,3 +401,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+*.vcxproj
