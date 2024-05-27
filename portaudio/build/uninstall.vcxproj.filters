@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Franz Joseph\Desktop\Stuff\FER_Stuff\Projekt\DigitalPedal\portaudio\build\CMakeFiles\a9fee6b190eed2a3f32d1fe3e78c4993\uninstall.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Franz Joseph\Desktop\Stuff\FER_Stuff\Projekt\DigitalPedal\portaudio\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Franz Joseph\Desktop\Stuff\FER_Stuff\Projekt\DigitalPedal\portaudio\build\CMakeFiles\uninstall" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{5E873B0F-B224-319D-BCEF-70987E06FF48}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

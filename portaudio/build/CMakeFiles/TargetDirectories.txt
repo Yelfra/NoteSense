@@ -1,0 +1,6 @@
+C:/Users/Franz Joseph/Desktop/Stuff/FER_Stuff/Projekt/DigitalPedal/portaudio/build/CMakeFiles/portaudio.dir
+C:/Users/Franz Joseph/Desktop/Stuff/FER_Stuff/Projekt/DigitalPedal/portaudio/build/CMakeFiles/portaudio_static.dir
+C:/Users/Franz Joseph/Desktop/Stuff/FER_Stuff/Projekt/DigitalPedal/portaudio/build/CMakeFiles/uninstall.dir
+C:/Users/Franz Joseph/Desktop/Stuff/FER_Stuff/Projekt/DigitalPedal/portaudio/build/CMakeFiles/INSTALL.dir
+C:/Users/Franz Joseph/Desktop/Stuff/FER_Stuff/Projekt/DigitalPedal/portaudio/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Franz Joseph/Desktop/Stuff/FER_Stuff/Projekt/DigitalPedal/portaudio/build/CMakeFiles/ZERO_CHECK.dir
