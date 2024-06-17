@@ -5,7 +5,7 @@
 
 # Yelfra ignores
 *.vcxproj
-# NoteSense/x64/
+NoteSense/x64/
 
 
 # User-specific files
