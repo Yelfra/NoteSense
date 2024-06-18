@@ -1,0 +1,47 @@
+\babel@toc {croatian}{}\relax 
+\contentsline {chapter}{\numberline {1}Uvod}{1}{}%
+\contentsline {chapter}{\numberline {2}Frekvencija i visina tona}{2}{}%
+\contentsline {section}{\numberline {2.1}Visina tona}{2}{}%
+\contentsline {section}{\numberline {2.2}Frekvencija u glazbi}{3}{}%
+\contentsline {chapter}{\numberline {3}Glazbene note}{4}{}%
+\contentsline {section}{\numberline {3.1}Kromatska ljestvica}{4}{}%
+\contentsline {chapter}{\numberline {4}Frekvencije na primjeru gitare}{6}{}%
+\contentsline {section}{\numberline {4.1}Pragovi}{6}{}%
+\contentsline {section}{\numberline {4.2}Štimanje}{6}{}%
+\contentsline {section}{\numberline {4.3}Raspon nota i frekvencija}{7}{}%
+\contentsline {chapter}{\numberline {5}Harmonici}{8}{}%
+\contentsline {section}{\numberline {5.1}Frekvencijski spektri}{8}{}%
+\contentsline {chapter}{\numberline {6}Digitalna obrada signala}{13}{}%
+\contentsline {section}{\numberline {6.1}Uzorkovanje}{13}{}%
+\contentsline {chapter}{\numberline {7}Algoritam brze Fourierove transformacije - FFT}{15}{}%
+\contentsline {section}{\numberline {7.1}Način rada FFT-a}{15}{}%
+\contentsline {section}{\numberline {7.2}Problemi FFT-a}{16}{}%
+\contentsline {chapter}{\numberline {8}Algoritam YIN\cite {de2002yin}}{17}{}%
+\contentsline {section}{\numberline {8.1}Sličnost između dvaju signala}{17}{}%
+\contentsline {section}{\numberline {8.2}Funkcija autokorelacije}{18}{}%
+\contentsline {section}{\numberline {8.3}Funkcija razlike}{19}{}%
+\contentsline {section}{\numberline {8.4}Funkcija kumulativne srednje normalizirane razlike}{21}{}%
+\contentsline {section}{\numberline {8.5}Prag}{21}{}%
+\contentsline {section}{\numberline {8.6}Dodatni koraci}{22}{}%
+\contentsline {subsection}{\numberline {8.6.1}Parabolična interpolacija}{22}{}%
+\contentsline {subsection}{\numberline {8.6.2}Najbolja lokalna procjena}{22}{}%
+\contentsline {chapter}{\numberline {9}Aplikacija}{23}{}%
+\contentsline {section}{\numberline {9.1}Snimanje zvuka}{23}{}%
+\contentsline {subsection}{\numberline {9.1.1}Funkcija povratnog poziva}{23}{}%
+\contentsline {subsection}{\numberline {9.1.2}Uspostava strujanja zvuka}{24}{}%
+\contentsline {subsection}{\numberline {9.1.3}Prekid strujanja zvuka}{25}{}%
+\contentsline {section}{\numberline {9.2}Parametri za detekciju temeljne frekvencije}{25}{}%
+\contentsline {subsection}{\numberline {9.2.1}Veličina \textit {buffer}-a}{26}{}%
+\contentsline {subsection}{\numberline {9.2.2}Frekvencija uzorkovanja}{26}{}%
+\contentsline {subsection}{\numberline {9.2.3}Minimalna i maksimalna frekvencija}{26}{}%
+\contentsline {subsection}{\numberline {9.2.4}Prag}{26}{}%
+\contentsline {section}{\numberline {9.3}Detekcija visine tona}{27}{}%
+\contentsline {subsection}{\numberline {9.3.1}Uspostava algoritma}{27}{}%
+\contentsline {subsection}{\numberline {9.3.2}Funkcija razlike}{27}{}%
+\contentsline {subsection}{\numberline {9.3.3}CMNDF}{28}{}%
+\contentsline {subsection}{\numberline {9.3.4}Odabir najboljeg kandidata}{28}{}%
+\contentsline {section}{\numberline {9.4}Mapiranje note}{30}{}%
+\contentsline {section}{\numberline {9.5}Funkcija povratnog poziva}{31}{}%
+\contentsline {section}{\numberline {9.6}Primjer rada}{32}{}%
+\contentsline {chapter}{\numberline {10}Zaključak}{34}{}%
+\contentsline {chapter}{Literatura}{35}{}%

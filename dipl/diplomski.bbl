@@ -1,0 +1,113 @@
+\begin{thebibliography}{10}
+
+\bibitem{de2002yin}
+Alain De~Cheveign{\'e} and Hideki Kawahara.
+\newblock Yin, a fundamental frequency estimator for speech and music.
+\newblock {\em The Journal of the Acoustical Society of America},
+  111(4):1917--1930, 2002.
+
+\bibitem{stevens1940relation}
+Stanley~S Stevens and John Volkmann.
+\newblock The relation of pitch to frequency: A revised scale.
+\newblock {\em The American Journal of Psychology}, 1940.
+
+\bibitem{iso161975}
+{I}{S}{O} 16:1975 --- iso.org.
+\newblock \url{https://www.iso.org/standard/3601.html}.
+\newblock [Accessed 09-06-2024].
+
+\bibitem{prout2011harmony}
+Ebenezer Prout.
+\newblock {\em Harmony: its theory and practice}.
+\newblock Cambridge University Press, 2011.
+
+\bibitem{benson2006music}
+Dave Benson.
+\newblock {\em Music: A mathematical offering}.
+\newblock Cambridge University Press, 2006.
+
+\bibitem{pericic2008visejezicni}
+Vlastimir Pericic.
+\newblock Visejezicni recnik muzickih termina.
+\newblock 2008.
+
+\bibitem{hemu_2020}
+Hrvatska enciklopedija (1941.-1945.), Apr 2020.
+
+\bibitem{benward2003introduction}
+B~Benward and M~Saker.
+\newblock Introduction. the materials of music: Sound and time.
+\newblock {\em Music in theory and practice, pp. xii--25). NY, NY:
+  McGraw-Hill}, 2003.
+
+\bibitem{sundberg1982tune}
+Johan Sundberg.
+\newblock {\em In Tune or Not?: a study of fundamental frequency in music
+  practise}.
+\newblock na, 1982.
+
+\bibitem{enciklopedijaDijatonikaHrvatska}
+dijatonika - {H}rvatska enciklopedija --- enciklopedija.hr.
+\newblock \url{https://www.enciklopedija.hr/clanak/dijatonika}.
+\newblock [Accessed 05-06-2024].
+
+\bibitem{sethares2005tuning}
+William~A Sethares.
+\newblock {\em Tuning, timbre, spectrum, scale}.
+\newblock Springer Science \& Business Media, 2005.
+
+\bibitem{teachmeaudio2020}
+Fundamental and harmonic frequencies, May 2020.
+
+\bibitem{christensen1987science}
+Thomas Christensen and Jean-Philippe Rameau.
+\newblock Eighteenth-century science and the "corps sonore:" the scientific
+  background to rameau's "principle of harmony".
+\newblock {\em Journal of Music Theory}, 31(1):23--50, 1987.
+
+\bibitem{reinke_2018}
+Carl Reinke.
+\newblock Spectroid, 2018.
+
+\bibitem{gustine_2021}
+Jeremy Gustine.
+\newblock Guitar tuner - pitch detection for dummies, Jul 2021.
+
+\bibitem{broesch2008digital}
+James~D Broesch.
+\newblock {\em Digital signal processing: instant access}.
+\newblock Elsevier, 2008.
+
+\bibitem{candes2008introduction}
+Emmanuel~J Cand{\`e}s and Michael~B Wakin.
+\newblock An introduction to compressive sampling.
+\newblock {\em IEEE signal processing magazine}, 2008.
+
+\bibitem{self2012audio}
+Douglas Self.
+\newblock {\em Audio engineering explained}.
+\newblock Routledge, 2012.
+
+\bibitem{lourde2009digital}
+Mary Lourde and Anjali~Kuppayil Saji.
+\newblock A digital guitar tuner.
+\newblock {\em arXiv e-prints}, pages arXiv--0912, 2009.
+
+\bibitem{focusrite_2022}
+Sample rate, bit depth and buffer size explained – focusrite audio ..., Jan
+  2022.
+
+\bibitem{portaudio}
+{P}ort{A}udio - an {O}pen-{S}ource {C}ross-{P}latform {A}udio {A}{P}{I} ---
+  portaudio.com.
+\newblock \url{https://www.portaudio.com/}.
+\newblock [Accessed 17-06-2024].
+
+\bibitem{inspiredacousticsMIDINote}
+{M}{I}{D}{I} note numbers and center frequencies | {I}nspired {A}coustics ---
+  inspiredacoustics.com.
+\newblock
+  \url{https://inspiredacoustics.com/en/MIDI_note_numbers_and_center_frequencies}.
+\newblock [Accessed 18-06-2024].
+
+\end{thebibliography}

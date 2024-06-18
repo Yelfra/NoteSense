@@ -1,0 +1,71 @@
+@manual{oetiket2007lshort,
+    author = {Oetiket, T. and Partl, H. and Hyna and Schlegl, E.},
+    title = {The not-so-short introduction to Latex},
+    url = {http://www.ctan.org/tex-archive/info/lshort/english/lshort.pdf}
+}
+
+@Manual{downes2002shortams,
+  title = 	 {{Short Math Guide for \LaTeX{}}},
+  author = 	 {Downes,, Michael},
+  organization = {American Mathematical Society},
+  year = 	 {2002},
+  url = 	 {ftp://ftp.ams.org/pub/tex/doc/amsmath/short-math-guide.pdf}
+}
+
+@Book{ungar2002uvod,
+  author = 	 {Šime Ungar},
+  title = 	 {{Uvod u \TeX{} s naglaskom na \LaTeX 2$\epsilon$}},
+  publisher = 	 {Odjel za matematiku, Sveučilište J.J.\ Strossmayera u Osijeku},
+  year = 	 {2002}
+}
+
+
+@book{broesch2008digital,
+  title={Digital signal processing: instant access},
+  author={Broesch, James D},
+  year={2008},
+  publisher={Elsevier}
+}
+
+@book{self2012audio,
+  title={Audio engineering explained},
+  author={Self, Douglas},
+  year={2012},
+  publisher={Routledge}
+}
+
+@article{candes2008introduction,
+  title={An introduction to compressive sampling},
+  author={Cand{\`e}s, Emmanuel J and Wakin, Michael B},
+  journal={IEEE signal processing magazine},
+  volume={25},
+  number={2},
+  pages={21--30},
+  year={2008},
+  publisher={IEEE}
+}
+
+@book{sundberg1982tune,
+  title={In Tune or Not?: a study of fundamental frequency in music practise},
+  author={Sundberg, Johan},
+  year={1982},
+  publisher={na}
+}
+
+@article{stevens1940relation,
+  title={The relation of pitch to frequency: A revised scale},
+  author={Stevens, Stanley S and Volkmann, John},
+  journal={The American Journal of Psychology},
+  volume={53},
+  number={3},
+  pages={329--353},
+  year={1940},
+  publisher={JSTOR}
+}
+
+@article{benward2003introduction,
+  title={Introduction. The materials of music: Sound and time},
+  author={Benward, B and Saker, M},
+  journal={Music in theory and practice, pp. xii--25). NY, NY: McGraw-Hill},
+  year={2003}
+}
