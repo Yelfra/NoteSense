@@ -7,8 +7,8 @@
 \usepackage[superscript, biblabel]{cite}
 \usepackage{cprotect}
 \usepackage{listings}
-
-\lstset{tabsize = 4, basicstyle=\footnotesize}
+\usepackage{float}
+\lstset{tabsize = 4, basicstyle=\footnotesize\ttfamily}
 
 %\usepackage{biblatex}
 %\addbibresource{literatura.bib}
@@ -16,7 +16,7 @@
 \begin{document}
 
 % TODO: Navedite broj rada.
-\thesisnumber{577}
+\thesisnumber{330}
 
 % TODO: Navedite naslov rada.
 \title{Aplikacija za detekciju glazbenih nota}
@@ -31,8 +31,8 @@
 \includepdf[pages={1}]{izvornik.pdf}
 
 % Dodavanje zahvale ili prazne stranice. Ako ne želite dodati zahvalu, naredbu ostavite radi prazne stranice.
-\zahvala{}
-%Zahvala mentoru prof. dr. sc. Ivanu Đureku što je pružio mogućnost vlastitog izbora teme i dopustio rad vlastitim tempom.
+\zahvala{Zahvala mentoru prof. dr. sc. Ivanu Đureku na prijedlogu teme i mogućnosti rada vlastitim tempom.}
+
 \tableofcontents
 
 \chapter{Uvod}
@@ -63,8 +63,15 @@ Kako bi uskladili instrumente, glazbenici štimaju instrumente prema referentnoj
 %Frekvencija u glazbi, kromatska ljestvica, note...
 U glazbi ljestvica predstavlja bilo koji skup glazbenih nota poredanih prema referentnoj frekvenciji ili visini tona (po standardu nota $A_4$ s frekvencijom od 440 Hz). Ljestvica u zapadnjačkoj koncertnoj glazbi temelji se na oktavi, što je razlika između dva zvuka čije su frekvencije u omjeru 2:1. Dva tona odsvirana istovremeno s razlikom od jedne oktave zvuče ugodno zajedno, zbog čega oktava ima široku primjenu u glazbi. Većina ljudi može razlikovati dva istovremena zvuka s razlikom u frekvenciji od 7 Hz, dok neki mogu prepoznati razliku čak i do 2 Hz.
 
-Termin intervala koristi se za označavanje razlike u visini tona između dva zvuka.\cite{prout2011harmony} Spomenuto je da su frekvencije dviju nota koje se razlikuju za oktavu u omjeru 2:1. To znači da se uzastopnim povećanjem visine tona za isti interval frekvencija eksponencijalno povećava, iako ljudsko uho to percipira kao linearno povećanje visine tona. Iz tog razloga, intervali se često mjere u centima (eng. \textit{cent}).\cite{benson2006music}
-Cent je jedinica dobivena dijeljenjem polutona na 100 jednakih dijelova, odnosno dijeljenjem oktave na 1200 jednakih dijelova. Formulu za cent moguće je izraziti logaritmom omjera frekvencija:
+Termin intervala koristi se za označavanje razlike u visini tona između dva zvuka.\cite{prout2011harmony} Spomenuto je da su frekvencije dviju nota koje se razlikuju za oktavu u omjeru 2:1. To znači da se uzastopnim povećanjem visine tona za isti interval frekvencija eksponencijalno povećava, iako ljudsko uho to percipira kao linearno povećanje visine tona.
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=1.1\textwidth]{octave_increase.png}}
+	\caption{Frekvencije note $E$ od $E_0$ do $E_8$}
+	\label{fig}
+\end{figure}
+
+Za potrebe preciznog mjerenja razlike u visini tona, intervali se često mjere u centima (eng. \textit{cent}).\cite{benson2006music} Cent je jedinica dobivena dijeljenjem polutona na 100 jednakih dijelova, odnosno dijeljenjem oktave na 1200 jednakih dijelova. Formulu za cent moguće je izraziti logaritmom omjera frekvencija:
 
 \begin{equation}
 	n = 1200 \cdot \log_2(\dfrac{f_1}{f_2}) \\ 
@@ -90,7 +97,7 @@ Kromatska ljestvica (eng. \textit{chromatic scale} ili \textit{twelve-tone scale
 	f_n = f_0 \cdot (\sqrt[12]{2})^n\\
 \end{equation}
 
-gdje je $f_0$ frekvencija početne note, a $n$ broj polutona od početne note. Uz navedene informacije može se prikazati kromatska ljestvica, konstruirana po noti $C_3$:
+gdje je $f_0$ frekvencija početne note, a $n$ broj polutona od početne note. Uz navedene informacije može se prikazati kromatska ljestvica konstruirana po noti $C_3$, zajedno s pripadnim frekvencijama (Hz):
 
 %C & C$\sharp$ ili D$\flat$ & D & D$\sharp$ ili E$\flat$ & E & F & F$\sharp$ ili G$\flat$ & G & G$\sharp$ ili A$\flat$ & A & A$\sharp$ ili B$\flat$ & B\\
 \begin{center}
@@ -104,7 +111,7 @@ gdje je $f_0$ frekvencija početne note, a $n$ broj polutona od početne note. U
 
 Vrijedi napomenuti da note $E$ i $B$ obično slijede note $F$ i $C$, umjesto njihovih povišenih nota zapisanih kao $E^\sharp$ i $B^\sharp$. Dijatonička ljestvica, bazirana na podjeli oktave na 7 intervala, upotpunjena je kao kromatska ljestvica s 5 novih nota. Kako bi zapisi nota predstavljali jednake visine tona u obje ljestvice, izbjeglo se preimenovanje već utvrđenih nota.\cite{enciklopedijaDijatonikaHrvatska}
 
-Kromatska ljestvica omogućuje sviranje svih mogućih nota unutar jedne oktave, čineći je osnovom za mnoge melodijske i harmonijske strukture. Radi svoje intuitivnosti i fleksibilnosti ima značajnu ulogu u glazbi.
+Kromatska ljestvica omogućuje sviranje svih mogućih nota unutar jedne oktave, čineći je osnovom za mnoge melodijske i harmonijske strukture. Zbog svoje intuitivnosti i fleksibilnosti ima značajnu ulogu u glazbi.
 %
 
 \chapter{Frekvencije na primjeru gitare}
@@ -112,10 +119,10 @@ Postoje raznovrsni tipovi gitara sa šest žica: klasična, akustična, elektri�
 
 \section{Pragovi}
 % ima isti ucinak kao skracivanje zice
-Vrat gitare precizno je podijeljen manjim metalnim trakama na pragove. Pritisak žice na prag ima isti učinak kao skraćivanje žice, a što je žica kraća, to je odsvirani ton viši. Pritiskom pragova niže na vratu (prema tijelu gitare), odsvirane žice titrat će višom frekvencijom, tj. svirat će više note. Time se note učinkovito raspodjeljuju po pragovima na vratu gitare, uključujući one note odsvirane bez pritiska na žice. Klasične i akustične gitare obično imaju vrat podijeljen na 18 do 21 pragova , dok električne obično imaju između 21 i 24 pragova, a ponekad s iznimkama do 27 praga.
+Vrat gitare precizno je podijeljen manjim metalnim trakama na pragove. Pritisak žice na prag ima isti učinak kao skraćivanje žice, a što je žica kraća, to je odsvirani ton viši. Pritiskom pragova niže na vratu (prema tijelu gitare), odsvirane žice titrat će višom frekvencijom, tj. svirat će više note. Time se note učinkovito raspodjeljuju po pragovima na vratu gitare, uključujući one note odsvirane bez pritiska na žice. Klasične i akustične gitare obično imaju vrat podijeljen na 18 do 21 prag, dok električne obično imaju između 21 i 24 praga, a ponekad s iznimkama do 27 pragova.
 
 \section{Štimanje}
-Osim broja pragova, na frekvencijski raspon gitare utječe njeno štimanje koje svaka gitara može mijenjati. Štimanje (eng. \textit{tuning}) gitare odnosi se na specifičan raspored nota koje žice sviraju prilikom nepritisnutog titranja, na što utječe napetost žica. Žice se mogu olabaviti ili zategnuti pomoću vijaka na glavi gitare što se, za razliku od pritisaka na pragove, izvodi prije sviranja. 
+Osim broja pragova, na frekvencijski raspon gitare utječe njeno štimanje koje svaka gitara može mijenjati. Štimanje (eng. \textit{tuning}) gitare odnosi se na specifičan raspored nota koje žice sviraju prilikom nepritisnutog titranja, na što utječe napetost žica. Žice se mogu otpustiti ili zategnuti pomoću vijaka na glavi gitare što se, za razliku od pritisaka na pragove, izvodi prije sviranja. 
 
 Standardno naštimana (eng. \textit{standard tuning}) gitara podrazumijeva da su žice (od gornje prema donjoj) naštimane prema notama:
 \begin{center}
@@ -132,11 +139,11 @@ Dodatan primjer štimanja je \textit{Open D}, koje predstavlja raspored nota:
 \end{center}
 
 \section{Raspon nota i frekvencija}
-Predstaviti uobičajeni frekvencijski raspon gitare može se kao primjer uzeti standardno naštimana gitara s 21 pragova. Frekvencijski raspon gitare s 21 poljem proteže se od note $E_2$ s frekvencijom od 82,41 Hz do note $C_6^\sharp$ s frekvencijom od 1108,73 Hz. Važno je napomenuti da je najniža frekvencija postignuta sviranjem "otvorene" (nepritisnute) gornje $E_2$ žice, dok je najviša frekvencija postignuta sviranjem donje $E_4$ žice, pritisnute na 21. pragu vrata gitare. Sljedeća tablica prikazuje raspon nota takve gitare i njihovih frekvencija:
+Uobičajeni frekvencijski raspon gitare može se predstaviti primjerom standardno naštimane gitare s 21 pragom. Frekvencijski raspon gitare s 21 pragom proteže se od note $E_2$ s frekvencijom od 82,41 Hz do note $C_6^\sharp$ s frekvencijom od 1108,73 Hz. Važno je napomenuti da je najniža frekvencija postignuta sviranjem "otvorene" (nepritisnute) gornje $E_2$ žice, dok je najviša frekvencija postignuta sviranjem donje $E_4$ žice, pritisnute na 21. pragu vrata gitare. Sljedeća tablica prikazuje raspon nota takve gitare i njihovih frekvencija:
 
 \begin{table}[h]
 	\begin{center}
-		\caption{Raspon nota i frekvencija gitare s 24 pragova.}
+		\caption{Raspon nota i frekvencija gitare s 24 praga.}
 		\begin{tabular}{c|c c c c c}
 			Nota / Frekvencija (Hz)  & 2 & 3 & 4 & 5 & 6\\
 			\hline
@@ -169,22 +176,16 @@ Predstaviti uobičajeni frekvencijski raspon gitare može se kao primjer uzeti s
 %
 
 \chapter{Harmonici}
-Većina zvukova sastoji se od mješavine različitih frekvencija. Kada žica gitare titra, proizvodi temeljnu frekvenciju i njene višekratnike, koji se nazivaju harmonici. Pregibi ili harmonici (eng. \textit{harmonics}) nastaju kod zvukova s jednom dominantnom, odnosno temeljnom frekvencijom (eng. \textit{fundamental frequency}), kao frekvencije višekratnika te temeljne frekvencije.\cite{sethares2005tuning} Temeljna frekvencija najniža je i obično najintenzivnija frekvencija u zvuku.\cite{teachmeaudio2020} Na primjer, ako je $F$ temeljna frekvencija, harmonici zvuka imat će frekvencije $2F$, $3F$, $4F$, itd. Suma intenziteta frekvencija zvuka sačinjenog od harmonika bi se mogla onda prikazati na sljedeći način:
+Većina zvukova sastoji se od mješavine različitih frekvencija. Kada žica gitare titra, ona proizvodi temeljnu frekvenciju i njene višekratnike koji se nazivaju harmonici. Pregibi ili harmonici (eng. \textit{harmonics}) nastaju kod zvukova s jednom dominantnom, odnosno temeljnom frekvencijom (eng. \textit{fundamental frequency}), kao višekratne frekvencije te temeljne frekvencije.\cite{sethares2005tuning} Temeljna frekvencija najniža je i obično najintenzivnija frekvencija u zvuku.\cite{teachmeaudio2020} Na primjer, ako je $F$ temeljna frekvencija, harmonici zvuka imat će frekvencije $2F$, $3F$, $4F$, itd. Suma intenziteta frekvencija zvuka sačinjenog od harmonika bi se mogla onda prikazati na sljedeći način:
 
 \begin{equation}
 	a \cdot F + b \cdot 2F + c \cdot 3F + ...\\
 \end{equation}
 
-pri čemu su $a$, $b$, $c$ koeficijenti intenziteta. Koeficijent $a$ obično je najveći jer je $F$ temeljna frekvencija. Razlike u koeficijentima intenziteta dolaze od različitih izvora zvuka. Različiti instrumenti proizvode različite intenzitete harmonika, što doprinosi njihovoj jedinstvenoj boji zvuka. Osim intenziteta harmonika, razlike u zvuku između dvaju različitih izvora stvaraju i slabije popratne frekvencije, tzv. alikvotni tonovi (eng. \textit{overtones}) koji tonu daju dodatnu boju.\cite{christensen1987science} Iz tih razloga, nota odsvirana na dva različita instrumenta zvučat će drugačije, iako ima istu temeljnu frekvenciju, odnosno visinu tona.
+pri čemu su $a$, $b$, $c$ koeficijenti intenziteta. Koeficijent $a$ obično je najveći jer je $F$ temeljna frekvencija. Razlike u koeficijentima intenziteta dolaze od različitih izvora zvuka. Različiti instrumenti proizvode različite intenzitete harmonika, što doprinosi njihovoj jedinstvenoj boji zvuka. Osim intenziteta harmonika, razlike u zvuku između dvaju različitih izvora stvaraju i slabije popratne frekvencije, tzv. alikvotni tonovi (eng. \textit{overtones}) koji tonu daju dodatnu boju.\cite{christensen1987science} Iz ovih razloga, nota odsvirana na dva različita instrumenta zvučat će drugačije, iako ima istu temeljnu frekvenciju, odnosno visinu tona.
 
 \section{Frekvencijski spektri}
-Harmonici se lako mogu istaknuti prikazima frekvencijskih spektara snimljenih zvukova. Slike 5.1 do 5.6 predstavljaju spektrograme frekvencija žica gitare, snimljene pomoću aplikacije \textit{Spectroid}.\cite{reinke_2018} Lako je uočiti kako se među frekvencijama ističe temeljna frekvencija i njezini harmonici.
-
-Primjerice, slika 5.5 vrlo jasno prikazuje ovaj fenomen, s istaknutom dominantnom frekvencijom od 247 Hz, što je upravo temeljna frekvencija note $B_3$. Temeljnu frekvenciju redom slijede istaknute frekvencije od 494 Hz, 739 Hz, 985 Hz te 1478 Hz, koji su približni višekratnici temeljne frekvencije. Treba napomenuti da intenzitet harmonika nije uvijek u opadajućem poretku, što se vidi kod harmonika od 1478 Hz koji je jačeg intenziteta od prethodna dva harmonika.
-
-Drugačiji primjer pokazuje slika 5.1. Iako je frekvencija od 83 Hz (što odgovara noti $E_2$) istaknuta, ona nije najistaknutija frekvencija. Ovo je čest problem pri detekciji frekvencija u zvučnim signalima. Ovisno o snimljenim podacima, temeljna frekvencija može, ali ne mora biti najistaknutija.\cite{gustine_2021} Više o ovom problemu razmatra se u poglavlju 7.2.
-
-Zbog neidealnih uvjeta pri mjerenju u sklopu ovoga rada, dolazi do manjih odstupanja u vrijednostima višekratnika, ali je pojava harmonika svejedno jasno vidljiva.
+Harmonici se lako mogu istaknuti prikazima frekvencijskih spektara snimljenih zvukova. Slike 5.1 do 5.6 predstavljaju spektrograme frekvencija žica gitare, snimljene pomoću aplikacije \textit{Spectroid}\cite{reinke_2018}\thinspace. Lako je uočiti kako se među frekvencijama ističe temeljna frekvencija i njezini harmonici.
 
 \clearpage
 
@@ -219,32 +220,57 @@ Zbog neidealnih uvjeta pri mjerenju u sklopu ovoga rada, dolazi do manjih odstup
 	\label{fig}
 \end{figure}
 
+\clearpage
+
+Zbog neidealnih uvjeta pri mjerenju u sklopu ovoga rada, dolazi do manjih odstupanja u vrijednostima višekratnika, ali je pojava harmonika svejedno jasno vidljiva.
+
+Primjerice, slika 5.5 vrlo jasno prikazuje ovaj fenomen, s istaknutom dominantnom frekvencijom od 247 Hz, što je upravo temeljna frekvencija note $B_3$. Temeljnu frekvenciju redom slijede istaknute frekvencije od 494 Hz, 739 Hz, 985 Hz te 1478 Hz, koji su približni višekratnici temeljne frekvencije. Treba napomenuti da intenzitet harmonika nije uvijek u opadajućem poretku, što se vidi kod harmonika od 1478 Hz koji je jačeg intenziteta od prethodna dva harmonika.
+
+Drugačiji primjer pokazuje slika 5.1. Iako je frekvencija od 83 Hz (što odgovara noti $E_2$) istaknuta, ona nije najistaknutija frekvencija. Ovo je čest problem pri detekciji frekvencija u zvučnim signalima. Ovisno o snimljenim podacima, temeljna frekvencija može, ali ne mora biti najistaknutija.\cite{gustine_2021} Više o ovom problemu razmatra se u poglavlju 7.2.
+
+Vrijedi napomenuti da intenzitet temeljne frekvencije i harmonika kroz vrijeme nije konstantan. Česta pojava početkom sviranja note je skok te zatim lagani pad u intenzitetu temeljne frekvencije uz lagani porast intenziteta harmonika. Ovakva pojava dodatno otežava konzistentne rezultate u detekciji temeljne frekvencije.
+
 \chapter{Digitalna obrada signala}
 %O samoj digitalnoj obradi signala
 Digitalna obrada signala (eng. \textit{Digital Signal Processing} - \textit{DSP}) koristi procesore koji preuzimaju snimljene signale iz stvarnog svijeta poput zvuka, govora, video prikaza, temperature, tlaka, radara i drugih signala koji su digitalizirani te nad njima izvode matematičke operacije kako bi ih oblikovali.
 
-Signale je potrebno obraditi kako bi se informacija koju sadrže mogla bolje prikazati, analizirati ili pretvoriti u drugu vrstu signala koja bi mogla biti od korisna. Da bi se analogni signal digitalizirao, potreban je analogno-digitalni pretvarač (eng. \textit{Analog-to-digital converter} - \textit{ADC}) koji će snimljeni analogni signal pretvoriti u digitalni binarni zapis.
+Signale je potrebno obraditi kako bi se informacija koju sadrže mogla bolje prikazati, analizirati ili pretvoriti u drugu vrstu signala koja bi mogla biti korisna. Da bi se analogni signal digitalizirao, potreban je analogno-digitalni pretvarač (eng. \textit{Analog-to-digital converter} - \textit{ADC}) koji će snimljeni analogni signal pretvoriti u digitalni binarni zapis.
 
 Primjena digitalne obrade signala donosi mnoge prednosti u odnosu na analognu obradu, kao što su kompresija podataka, filtriranje i uklanjanje šuma. Pruža veću fleksibilnost za različite primjene te omogućuje otkrivanje i ispravljanje pogrešaka pri prijenosu podataka.\cite{broesch2008digital}
-
+\clearpage
 \section{Uzorkovanje}
 %Sampling
-U kontekstu obrade zvučnog signala, uzorkovanje (eng. \textit{sampling}) je proces pretvorbe zvučnog vala u slijed "uzoraka". Cilj uzorkovanja je kroz vrijeme zabilježiti uzorke ekvivalentne njihovim trenutnim vrijednostima u signalu. Uzorak (eng. \textit{sample}) uglavnom predstavlja amplitudu signala u određenom trenutku.
+U kontekstu obrade zvučnog signala, uzorkovanje (eng. \textit{sampling}) je proces pretvorbe zvučnog vala u slijed "uzoraka". Cilj uzorkovanja je kroz vrijeme zabilježiti uzorke ekvivalentne njihovim trenutnim vrijednostima u signalu.
 
-Frekvencija uzorkovanja (eng. \textit{sample rate} ili \textit{sampling frequency}) predstavlja prosječni broj uzoraka uzetih u jednoj sekundi te se mjeri u hercima (Hz). Prema Nyquist-Shannonovom teoremu, frekvencija uzorkovanja mora biti najmanje dvostruko veća od najveće frekvencije prisutne u signalu kako bi se signal mogao pravilno rekonstruirati.\cite{candes2008introduction} Budući da se zvučni signali snimaju do gornje granice ljudskog sluha od 20 kHz, obrađuju se frekvencijom uzorkovanja većom od 40 kHz. Najčešće frekvencije uzorkovanja su 44,1 kHz, 48 kHz, 88,2 kHz ili 96 kHz.\cite{self2012audio} Frekvencije uzorkovanja iznad 50 kHz rijetko se koriste jer ne doprinose kvaliteti zvuka za ljudsko uho, a zahtijevaju veću širinu pojasa (eng. \textit{bandwidth}) te više resursa za obradu i pohranu podataka.
-%
+\begin{figure}[H]
+	\centerline{\includegraphics[width=1.2\textwidth]{sampling_signals.png}}
+	\caption{Uzorkovanje signala kroz vrijeme}
+	\label{fig}
+\end{figure}
+
+Uzorak (eng. \textit{sample}) uglavnom predstavlja amplitudu signala u određenom trenutku, a frekvencija uzorkovanja (eng. \textit{sample rate} ili \textit{sampling frequency}) predstavlja prosječni broj uzoraka uzetih u jednoj sekundi te se mjeri u hercima (Hz). 
+
+Prema Nyquist-Shannonovom teoremu, frekvencija uzorkovanja mora biti najmanje dvostruko veća od najveće frekvencije prisutne u signalu kako bi se signal mogao pravilno rekonstruirati.\cite{candes2008introduction} Budući da se zvučni signali snimaju do gornje granice ljudskog sluha od 20 kHz, obrađuju se frekvencijom uzorkovanja većom od 40 kHz. Najčešće frekvencije uzorkovanja su 44,1 kHz, 48 kHz, 88,2 kHz ili 96 kHz.\cite{self2012audio} Frekvencije uzorkovanja iznad 50 kHz rijetko se koriste jer ne doprinose kvaliteti zvuka za ljudsko uho, a zahtijevaju veću širinu pojasa (eng. \textit{bandwidth}) te više resursa za obradu i pohranu podataka.
+
+
 
 \chapter{Algoritam brze Fourierove transformacije - FFT}
 %FFT
 Aplikacija \textit{Spectroid} za detekciju frekvencija koristi algoritam brze Fourierove transformacije (eng. \textit{Fast Fourier Transform} - \textit{FFT}).\cite{reinke_2018} Algoritam FFT pretvara signal u skup brojeva, omogućavajući prepoznavanje najdominantnijih frekvencija unutar signala. Njegova sposobnost da razdvoji zvučni signal na njegove sastavne frekvencije čini ga vrlo korisnom metodom u praksi obrade zvučnih signala.\cite{gustine_2021}
 
+\begin{figure}[H]
+	\centerline{\includegraphics[width=1.2\textwidth]{FFT_spectrum.png}}
+	\caption{Učinak FFT-a na zvučni signal odsvirane žice}
+	\label{fig}
+\end{figure}
+
 \section{Način rada FFT-a}
 %nacin rada fft
-Kada se signal obrađuje pomoću FFT-a, izlaz je niz brojeva koji predstavlja frekvencijsku domenu obrađenog signala, primjerice:
+Kada se signal obrađuje pomoću FFT-a, izlaz je niz (najčešće niskih decimalnih) brojeva koji predstavlja frekvencijsku domenu obrađenog signala, primjerice:
 \begin{verbatim}
-	fft_output_array = [23, 43, 65, 443, 321, 54, 56 ...]
+	fft_output_array = [0.001, 0.003, 0.007, 0.015, 0.005...]
 \end{verbatim}
-Svaki element ovog niza naziva se \textit{bin} i predstavlja određeni raspon frekvencija. Vrijednost svakog elementa označava intenzitet frekvencija unutar tog raspona. Veća vrijednost označava veći itenzitet ili zastupljenost tih frekvencija. Raspon frekvencija za svaki \textit{bin} ovisi o rezoluciji (eng. \textit{resolution}) koja je bitna za sposobnost razlikovanja dviju bliskih frekvencija. Rezolucija se može izračunati na sljedeći način:
+Svaki element ovog niza naziva se \textit{bin} i predstavlja određeni raspon frekvencija. Vrijednost svakog elementa označava intenzitet frekvencija unutar tog raspona. Veća vrijednost označava veći intenzitet ili zastupljenost tih frekvencija. Raspon frekvencija za svaki \textit{bin} ovisi o rezoluciji (eng. \textit{resolution}) koja je bitna za sposobnost razlikovanja dviju bliskih frekvencija. Rezolucija se može izračunati na sljedeći način:
 \begin{verbatim}
 	resolution = sampling_rate / fft_size
 \end{verbatim}
@@ -262,13 +288,13 @@ Rezolucija FFT-a igra ključnu ulogu u preciznosti detekcije frekvencija. Da bi 
 
 \section{Problemi FFT-a}
 %problem ffta naveden u 4.2
-U poglavlju 5.2 naveden je problem vezan uz detekciju temeljne frekvencije signala. Primjerice, na slici 4.1 temeljna frekvencija note $E_2$ iznosi 82,41 Hz, ali ta frekvencija nije najsnažnija. Zbog toga se ne može osloniti na prepoznavanje temeljne frekvencije jednostavnim traženjem frekvencije s najvećim intenzitetom. Ova pojava može izazvati probleme u sustavima koji trebaju točno prepoznati visinu tona odsvirane note.
+U poglavlju 5 naveden je problem vezan uz detekciju temeljne frekvencije signala. Primjerice, na slici 5.1 temeljna frekvencija note $E_2$ iznosi 82,41 Hz, ali ta frekvencija nije najsnažnija. Zbog toga se ne može osloniti na prepoznavanje temeljne frekvencije jednostavnim traženjem frekvencije s najvećim intenzitetom. Ova pojava može izazvati probleme u sustavima koji trebaju točno prepoznati visinu tona odsvirane note.
 
-Iako je FFT moćan alat za analizu frekvencija, njegove ograničenja u prepoznavanju temeljne frekvencije zahtijevaju upotrebu dodatnih ili alternativnih algoritama kako bi se postigla točnija detekcija glazbenih nota. U ovom radu, zbog tih ograničenja, koristi se kompleksniji algoritam YIN za prepoznavanje visine tona.
+Iako je FFT moćan alat za analizu frekvencija, njegova ograničenja u prepoznavanju temeljne frekvencije zahtijevaju upotrebu dodatnih ili alternativnih algoritama kako bi se postigla točnija detekcija glazbenih nota. U ovom radu, zbog tih ograničenja, koriste se koncepti kompleksnijeg algoritma YIN za prepoznavanje visine tona.
 
-\chapter{Algoritam YIN\cite{de2002yin}}
+\chapter{Algoritam YIN}
 %
-YIN algoritam razvili su Alain de Cheveigné i Hideki Kawahara 2002. godine kao unaprjeđenje ranijih metoda za detekciju visine tona. Razvijen je kako bi nadomjestio nedostatke klasičnih metoda poput FFT-a, posebno u kontekstu glazbenih nota, gdje su potrebne visoka točnost i niska stopa pogrešaka. Učestalost grešaka je otprilike tri puta manja u usporedbni s najboljim konkurentskim metodama te je algoritam prikladan za visoke tonove i jednostavan za implementaciju s niskim kašnjenjem (eng. \textit{latency}).\cite{de2002yin}
+YIN algoritam razvili su Alain de Cheveigné i Hideki Kawahara 2002. godine kao unaprjeđenje ranijih metoda za detekciju visine tona. Razvijen je kako bi nadomjestio nedostatke klasičnih metoda poput FFT-a, posebno u kontekstu glazbenih nota, gdje je potrebna visoka točnost i niska stopa pogrešaka. Učestalost grešaka bila je otprilike tri puta manja u usporedbi s najboljim konkurentskim metodama tih vremena. Iako danas postoje precizniji i brži algoritmi, algoritam YIN prikladan je za visoke tonove i jednostavan za implementaciju s niskim kašnjenjem (eng. \textit{latency}).\cite{de2002yin}
 
 Naziv algoritma inspiriran je kineskom filozofijom \textit{yin} i \textit{yang}, održavajući ravnotežu između točnosti i računalne učinkovitosti.
 
@@ -281,6 +307,12 @@ Kako bi se objasnio YIN algoritam, korisno je znati kako proučavanje sličnosti
 \end{equation}
 
 gdje $f$ i $g$ predstavljaju vrijednosti signala u određenom trenutku $t$. Kada su vrijednosti dvaju signala na istoj strani osi $f = 0$ (oba pozitivna ili oba negativna), proizvod će biti pozitivan, što ukazuje na visoku sličnost. Ako su vrijednosti na suprotnim stranama (jedan pozitivan, drugi negativan), proizvod će biti negativan, što ukazuje na nisku sličnost. Sumiranjem ovih proizvoda možemo dobiti ukupnu mjeru sličnosti koja uzima u obzir sve točke u signalu.
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=1.0\textwidth]{similarity.png}}
+	\caption{Sličnost dvaju signala provjerom zajedničkih polariteta}
+	\label{fig}
+\end{figure}
 
 \section{Funkcija autokorelacije}
 Poseban slučaj gdje uspoređujemo signal sa samim sobom, ali s vremenskim pomakom (kašnjenjem), naziva se autokorelacija (eng. \textit{autocorrelation}). Funkcija autokorelacije (eng. \textit{autocorrelation function} - ACF) mjeri koliko je signal sličan samome sebi nakon određenog kašnjenja $\tau$:
@@ -298,7 +330,9 @@ Visoke vrijednosti ACF-a na određenom kašnjenju $\tau$ ukazuju na to da signal
 	\end{split}
 \end{equation}
 
-Pronalazak $\hat{\tau}$ moguće je postići na različite načine. U implementaciji ovog rada koristit će se jednostavna iteracija mogućih vrijednosti $\tau$ te usporedba pri svakom koraku. Pronalaskom $\hat{\tau}$, izračun temeljne frekvencije postaje trivijalan:
+Pronalazak $\hat{\tau}$ moguće je postići na različite načine. U implementaciji ovog rada koristit će se jednostavna iteracija mogućih vrijednosti $\tau$ te usporedba pri svakom koraku. 
+
+Pronalaskom $\hat{\tau}$, izračun temeljne frekvencije postaje trivijalan:
 
 \begin{equation}
 	f_{fundemental} = \frac{f_{sample}}{\hat{\tau}}
@@ -306,12 +340,18 @@ Pronalazak $\hat{\tau}$ moguće je postići na različite načine. U implementac
 
 gdje je temeljna frekvencija izražena $f_{fundemental}$, a $f_{sample}$ predstavlja frekvenciju uzorkovanja koja se koristi za snimanje signala.
 
+\begin{figure}[H]
+	\centerline{\includegraphics[width=1.0\textwidth]{autocorrelation.png}}
+	\caption{Autokorelacija signala s odmakom kašnjenja}
+	\label{fig}
+\end{figure}
+
 Autokorelacija je korisna za identifikaciju ponavljajućih obrazaca u signalu, što je ključno za detekciju temeljne frekvencije. Za perfektno periodnične signale, ACF će davati točne rezultate u detekciji temeljne frekvencije. Unatoč svojoj korisnosti, funkcija ACF je sama po sebi nedovoljna za preciznu detekciju temeljne frekvencije u složenim zvučnim signalima.
 
-Problem metode autokorelacije je što ne uzima u obzir odstupanja između vrijednosti originalnog i zakašnjelog signala, nego samo predznak tih vrijednosti. Implementacija funkcije ACF kao takva je osjetljiva na promjene u amplitudi signala. Porast amplitude signala kroz vrijeme povećavat će i produkt vrijednosti signala ($f(t) \cdot f(t + \tau)$) te će algoritam naivno birati veća kašnjenja kao najbolje kašnjenje $\hat{\tau}$. Smanjenje amplituda signala imat će suprotan učinak. Ovo je problematično jer vodi do pogreške gdje algoritam bira više, odnosno niže frekvencije umjesto stvarne temeljne frekvencije.
+Problem metode autokorelacije je što ne uzima u obzir odstupanja između vrijednosti originalnog i zakašnjelog signala, nego samo predznak tih vrijednosti. Implementacija funkcije ACF kao takve je osjetljiva na promjene u amplitudi signala. Porast amplitude signala kroz vrijeme povećavat će i produkt vrijednosti signala ($f(t) \cdot f(t + \tau)$) te će algoritam naivno birati veća kašnjenja kao najbolje kašnjenje $\hat{\tau}$. Smanjenje amplituda signala imat će suprotan učinak. Ovo je problematično jer vodi do pogreške gdje algoritam bira više, odnosno niže frekvencije umjesto stvarne temeljne frekvencije.
 
 Za potrebe ovoga rada, odnosno detekciju note u zvuku, potrebno je prilagoditi ovu metodu.
-
+\clearpage
 \section{Funkcija razlike}
 %
 Problem detekcije temeljne frekvencije može se sagledati iz drugačijeg kuta, krenuvši par koraka unazad. Perfektno periodičan signal $f$ s periodom $T$, u potpunosti će se preklapati sa zakašnjelom kopijom samog sebe ukoliko je to kašnjenje od $T$. Ovo se može zapisati kao:
@@ -356,7 +396,7 @@ Dubljim razmatranjem ove funkcije može se izvesti poveznica s funkcijom ACF. Ra
 	\end{split}
 \end{equation}
 
-Ovaj dodatan korak dodatno pojednostavljuje problem te omogućuje implementaciju pomoću ACF. Jedina razlika u usporedbi s ACF je što DF za niže vrijednosti pokazuje veću sličnost, odnosno bolje preklapanje originalnog i zakašnjelog signala. Drugim riječima, kašnjenje $\hat{\tau}$ tražit će se kao:
+Ovaj dodatan korak dodatno pojednostavljuje problem te omogućuje implementaciju pomoću ACF. Usporedno s ACF koji za niže vrijednosti pokazuje manju sličnost, DF za niže vrijednosti pokazuje veću sličnost, odnosno bolje preklapanje originalnog i zakašnjelog signala. Drugim riječima, kašnjenje $\hat{\tau}$ tražit će se kao:
 
 \begin{equation}
 	\begin{split}
@@ -365,7 +405,7 @@ Ovaj dodatan korak dodatno pojednostavljuje problem te omogućuje implementaciju
 	\end{split}
 \end{equation}
 
-Funkcija DF manje griješi pri problemu porasta amplitude nego funkcija ACF, budući da će većim odstupanjem vrijednosti signala ukazivati na manju sličnost. Unatoč tome, i ova metoda je osjetljiva na promjene amplituda signala. Ako signal sadrži šum ili lokalne anomalije poput velikih skokova ili padova, ove će promjene značajno povećati vrijednosti DF-a, što može dovesti do netočnih detekcija perioda. Potrebno je dodatno prilagoditi metodu.
+Funkcija DF manje griješi pri problemu porasta amplitude nego funkcija ACF, budući da će većim odstupanjem vrijednosti signala ukazivati na manju sličnost. Unatoč tome, i ova metoda je osjetljiva na promjene amplituda signala. Ako signal sadrži šum ili lokalne anomalije poput velikih skokova ili padova, ove će promjene značajno povećati vrijednosti DF-a, što može dovesti do netočnih detekcija perioda. Srećom, ovu metodu lako je dodatno prilagoditi.
 
 \section{Funkcija kumulativne srednje normalizirane razlike}
 %
@@ -387,12 +427,12 @@ Za slučaj bez kašnjenja ($\tau = 0$), CMNDF će primiti vrijednost 1. Budući 
 	\end{cases}
 \end{equation}
 
-Budući da su rezultati funkcije DF normalizirani, velika odstupanja u amplitudama razmotrena su s ostatkom analiziranog prozora u obziru. Posljedično, šum i modulacija amplituda imaju manji utjecaj na preciznost algoritma.
+Budući da su rezultati funkcije DF normalizirani, velika odstupanja u amplitudama bit će razmotrena s obzirom na ostatak analiziranog prozora. Posljedično, šum i modulacija amplituda imaju manji utjecaj na preciznost algoritma.
 
 
-\section{Prag}
+\section{Prag pretrage}
 %
-Posljednji dodatak CMNDF-u je uvođenje praga (eng. \textit{threshold}). Uvođenje praga pomaže u izbjegavanju grešaka uzrokovanih harmonicima, odnosno omogućava razlikovanje temeljne frekvencije od njezinih višekratnika koji također mogu imati niske vrijednosti CMNDF-a. Metoda CMNDF-a s pragom koristi se na način da se prvo izračunaju sve vrijednosti funkcije CMNDF-a, a zatim da se traži najmanja vrijednost kašnjenja $\tau$ za koju je vrijednost funkcije CMNDF manja od postavljenog praga. Ako ni jedno takvo kašnjenje nije pronađeno, uzima se ono koje daje najmanji rezultat CMNDF, tj. globalni minimum.
+Posljednji dodatak CMNDF-u je uvođenje praga (eng. \textit{threshold}). Uvođenje praga tijekom pretrage pomaže u izbjegavanju grešaka uzrokovanih harmonicima, odnosno omogućava razlikovanje temeljne frekvencije od njezinih višekratnika koji također mogu imati niske vrijednosti CMNDF-a. Metoda CMNDF-a s pragom pretrage koristi se na način da se prvo izračunaju sve vrijednosti funkcije CMNDF-a, a zatim da se traži najmanja vrijednost kašnjenja $\tau$ za koju je vrijednost funkcije CMNDF manja od postavljenog praga. Ako ni jedno takvo kašnjenje nije pronađeno, uzima se ono koje daje najmanji rezultat CMNDF, tj. globalni minimum.
 
 \begin{equation}
 	\hat{\tau} =
@@ -404,17 +444,17 @@ Posljednji dodatak CMNDF-u je uvođenje praga (eng. \textit{threshold}). Uvođen
  
 \section{Dodatni koraci}
 %
-YIN algoritam uključuje dva dodatna koraka za precizniju detekciju temeljne frekvencije.
+YIN algoritam uključuje dva dodatna koraka za precizniju detekciju temeljne frekvencije: parabolična interpolacija i najbolja lokalna procjena.
 
 \subsection{Parabolična interpolacija}
 %
-Parabolična interpolacija (eng. \textit{parabolic interpolation}) korisna je u slučajevima kada se radi nedovoljno visoke frekvencije uzorkovanja ne može precizno izabrati temeljna frekvencija. Ovakva pojava događa se kada se period temeljne frekvencije nalazi između dva uzorka. Interpolacija se zatim koristi jer je računalno jeftinija nego uzorkovanje signala na višoj frekvenciji. 
+Parabolična interpolacija (eng. \textit{parabolic interpolation}) korisna je u slučajevima kada se zbog nedovoljno visoke frekvencije uzorkovanja ne može precizno izabrati temeljna frekvencija. Ovakva pojava događa se kada se period temeljne frekvencije nalazi između dva uzorka. Interpolacija se zatim koristi jer je računalno jeftinija nego uzorkovanje signala na višoj frekvenciji. 
 
 Korak parabolične interpolacije nije potreban za svrhe ovog rada, budući da pridodaje računalnoj kompleksnosti algoritma koja pridodaje kašnjenju rezultata u stvarnom vremenu. S druge strane, parabolična interpolacija ne pridodaje nužnu količinu preciznosti da bi znatno unaprijedila funkcionalnost prethodnih koraka.
 
 \subsection{Najbolja lokalna procjena}
 %
-Metoda najbolje lokalne procjene (eng. \textit{best local estimate}) zadnji je korak u YIN algoritmu koji se koristi kako bi se smanjile pogreške nastale radi fluktuacija u procjenama. Za svaki trenutak analize $t$, traži najmanju vrijednost CMNDF u malom okruženju oko tog trenutka, pretraživanjem užeg intervala $[t - \frac{T_{\text{max}}}{2}, t + \frac{T_{\text{max}}}{2}]$, gdje je $T_{\text{max}}$ najveći očekivani period. Kao i u prethodnom koraku, u tom intervalu bira se kašnjenje $\hat{\tau}$, za koje je CMNDF najmanji.
+Metoda najbolje lokalne procjene (eng. \textit{best local estimate}) zadnji je korak u YIN algoritmu koji se koristi kako bi se smanjile pogreške nastale zbog fluktuacija u procjenama. Za svaki trenutak analize $t$, traži najmanju vrijednost CMNDF u malom okruženju oko tog trenutka, pretraživanjem užeg intervala $[t - \frac{T_{\text{max}}}{2}, t + \frac{T_{\text{max}}}{2}]$, gdje je $T_{\text{max}}$ najveći očekivani period. Kao i u prethodnom koraku, u tom intervalu bira se kašnjenje $\hat{\tau}$, za koje je CMNDF najmanji.
 
 Budući da i ovaj korak pridodaje računalnoj složenosti, a pruža zanemarivo veću preciznost, u implementaciji rada ga se izostavlja.
 
@@ -444,15 +484,15 @@ int paCallback(const void* input_buffer, void* output_buffer,
 }
 \end{lstlisting}
 
-Funkcija \verb|paCallback| poziva se iznova za svaki snimljeni \textit{buffer} audio signala. Učestalost pozivanja ovisit će o njezinim parametrima, specifično veličini \textit{buffer}-a. Vraćanjem vrijednosti 0 (zapisana kao enumeracija \verb|paContinue|), funkcija daje do znaka da je spremna primiti sljedeći \textit{buffer} podataka.
+Funkcija \lstinline[basicstyle=\ttfamily]|paCallback()| poziva se iznova za svaki snimljeni \textit{buffer} audio signala. Učestalost pozivanja ovisit će o njezinim parametrima, specifično veličini \textit{buffer}-a. Vraćanjem vrijednosti 0 (zapisana kao enumeracija \lstinline[basicstyle=\ttfamily]|paContinue|), funkcija je spremna primiti sljedeći \textit{buffer} podataka.
 
-Parametar \verb|input_buffer| predstavlja ulazni \textit{buffer} koji sprema amplitude snimljenog audio signala u decimalnom (\textit{float}) formatu. Slično kao \verb|input_buffer|, u \verb|output_buffer| mogu se spremiti izlazni audio signali. Parametar \verb|frames_per_buffer| predstavlja broj okvira (eng. \textit{frames}), odnosno uzoraka po \textit{buffer}-u. Ovaj parametar određuje veličinu parametara \verb|input_buffer| i \verb|output_buffer|.
+Parametar \lstinline[basicstyle=\ttfamily]|input_buffer| predstavlja ulazni \textit{buffer} koji sprema amplitude snimljenog audio signala u decimalnom (\textit{float}) formatu. Slično kao \lstinline[basicstyle=\ttfamily]|input_buffer|, u \lstinline[basicstyle=\ttfamily]|output_buffer| mogu se spremiti izlazni audio signali. Broj okvira (eng. \textit{frames}), odnosno broj uzoraka po \textit{buffer}-u, predstavljen je parametrom \lstinline[basicstyle=\ttfamily]|frames_per_buffer|. Ovaj parametar određuje veličinu parametara \lstinline[basicstyle=\ttfamily]|input_buffer| i \lstinline[basicstyle=\ttfamily]|output_buffer|.
 
-Dodatni parametri \verb|time_info|, \verb|status_flags| i \verb|user_data| pružaju dodatne informacije i kontekst o strujanju zvuka (eng. \textit{audio stream}) te nisu potrebni za implementaciju.
+Dodatni parametri \lstinline[basicstyle=\ttfamily]|time_info|, \lstinline[basicstyle=\ttfamily]|status_flags| i \lstinline[basicstyle=\ttfamily]|user_data| pružaju dodatne informacije i kontekst o strujanju zvuka (eng. \textit{audio stream}) te nisu potrebni za implementaciju.
 
 \subsection{Uspostava strujanja zvuka}
 %
-Kako bi se pokrenulo strujanje zvuka, potrebno ga je inicirati preko bibliotekine klase \verb|PaStream| i njenih metoda. Inicijalizacijom PortAudio-a alociraju se resursi koji su biblioteki potrebni za obradu zvuka.
+Kako bi se pokrenulo strujanje zvuka, potrebno ga je inicirati preko bibliotekine klase \lstinline[basicstyle=\ttfamily]|PaStream| i njenih metoda. Inicijalizacijom PortAudio-a alociraju se resursi koji su biblioteci potrebni za obradu zvuka.
 
 \begin{lstlisting}[language=C++, frame=single]
 PaStream* stream;
@@ -471,23 +511,23 @@ Pa_OpenDefaultStream(&stream,
 Pa_StartStream(stream);
 \end{lstlisting}
 
-Kako bi obrada zvuka bila ispravna, pri uspostavi strujanja bitno je pažljivo postaviti parametre funkcije \verb*|Pa_OpenDefaultStream()|. 
+Kako bi obrada zvuka bila ispravna, pri uspostavi strujanja bitno je pažljivo postaviti parametre funkcije \lstinline[basicstyle=\ttfamily]|Pa_OpenDefaultStream()|. 
 
-Prvi parametar uzima adresu pokazivača (eng. \textit{pointer}) na \verb*|PaStream| objekt.  
+Prvi parametar uzima adresu pokazivača (eng. \textit{pointer}) na \lstinline[basicstyle=\ttfamily]|PaStream| objekt.  
 
-Parametar \verb|num_input_channels| odnosi se na broj zvučnih kanala (eng. \textit{sound channels}) kojima će se ulazno strujanje služiti. Slično, parametar \verb|num_output_channels| odnosi se na broj izlaznih zvučnih kanala. Primjerice, za obradu ili izvedbu stereo zvuk (lijevi i desni kanali), vrijednost ovih parametara bit će 2.
+Parametar \lstinline[basicstyle=\ttfamily]|num_input_channels| odnosi se na broj zvučnih kanala (eng. \textit{sound channels}) kojima će se ulazno strujanje služiti. Parametar \lstinline[basicstyle=\ttfamily]|num_output_channels| odnosi se na broj izlaznih zvučnih kanala. Primjerice, za obradu ili izvedbu stereo zvuka (lijevi i desni kanali), vrijednost ovih parametara bit će 2.
 
-Četvrti parametar \verb|sample_format| predstavlja format zvučnih uzoraka u strujanju. Najčešći formati su \verb|paFloat32| (32-bitni decimalni broj - \textit{float}), \verb|paInt16| (16-bitni cjelobrojni broj - \textit{integer}), itd. Izbor formata ovisi o preciznosti kojom se signal nastoji prikazati.
+Četvrti parametar \lstinline[basicstyle=\ttfamily]|sample_format| predstavlja format zvučnih uzoraka u strujanju. Najčešći formati su \lstinline[basicstyle=\ttfamily]|paFloat32| (32-bitni decimalni broj - \textit{float}), \lstinline[basicstyle=\ttfamily]|paInt16| (16-bitni cjelobrojni broj - \textit{integer}), itd. Izbor formata ovisi o preciznosti kojom se signal nastoji prikazati.
 
-Peti parametar \verb|sample_rate| precizira frekvenciju uzorkovanja kojom će zvuk biti obrađen, dok šesti parametar \verb|frames_per_buffer| određuje veličinu veličinu ulaznih i izlaznih \textit{buffer}-a.
+Peti parametar \lstinline[basicstyle=\ttfamily]|sample_rate| precizira frekvenciju uzorkovanja kojom će zvuk biti obrađen, dok šesti parametar \lstinline[basicstyle=\ttfamily]|frames_per_buffer| određuje veličinu ulaznih i izlaznih \textit{buffer}-a.
 
-Predzadnji parametar \verb|stream_callback| traži pokazivač na funkciju povratnog poziva (\verb|paCallback|) koju će PortAudio pozivati za obradu zvuka.
+Predzadnji parametar \lstinline[basicstyle=\ttfamily]|stream_callback| traži pokazivač na funkciju povratnog poziva (\lstinline[basicstyle=\ttfamily]|paCallback()|) koju će PortAudio pozivati za obradu zvuka.
 
-Zadnji parametar \verb|user_data| pruža mogućnost prosljeđivanja dodatnih korisničkih podataka funkciji povratnog poziva.
+Zadnji parametar \lstinline[basicstyle=\ttfamily]|user_data| pruža mogućnost prosljeđivanja dodatnih korisničkih podataka funkciji povratnog poziva.
 
 \subsection{Prekid strujanja zvuka}
 
-Jedan od načina za prekid strujanja zvuka je ulazom od korisnika. U implementaciji rada ovo je postignuto pritiskom tipke \textit{Enter}. Program do tog trenutka izvršava obradu zvuka preko funkcije \verb*|paCallback|, ali ne nastavlja s izvršavanjem naredbi iza \verb|std::cin.get();| dok ne primi ulaz od korisnika.
+Jedan od načina za prekid strujanja zvuka je ulazom od korisnika. U implementaciji rada ovo je postignuto pritiskom tipke \textit{Enter}. Program do tog trenutka izvršava obradu zvuka preko funkcije \lstinline[basicstyle=\ttfamily]|paCallback()|, ali ne nastavlja s izvršavanjem naredbi iza \lstinline[basicstyle=\ttfamily]|std::cin.get();| dok ne primi ulaz od korisnika.
 
 Nastavkom programa se PortAudio-vim metodama zaustavlja i zatvara strujanje te dealociraju resursi koje je biblioteka koristila.
 
@@ -506,11 +546,11 @@ Pa_Terminate();
 
 \section{Parametri za detekciju temeljne frekvencije}
 %
-Parametri vezani za algoritam za detekciju temeljne frekvencije uključuju veličinu \textit{buffer}-a (\verb*|buffer_size|), frekvenciju uzorkovanja (\verb*|sample_rate|), minimalnu i maksimalnu frekvenciju pretraživanja (\verb*|min_freq| i \verb*|max_freq|) i prag pretrage (\verb*|threshold|).
+Parametri vezani za algoritam za detekciju temeljne frekvencije uključuju veličinu \textit{buffer}-a (\lstinline[basicstyle=\ttfamily]|buffer_size|), frekvenciju uzorkovanja (\lstinline[basicstyle=\ttfamily]|sample_rate|), minimalnu i maksimalnu frekvenciju pretraživanja (\lstinline[basicstyle=\ttfamily]|min_freq| i \lstinline[basicstyle=\ttfamily]|max_freq|) te prag pretrage (\lstinline[basicstyle=\ttfamily]|threshold|).
 
 \subsection{Veličina \textit{buffer}-a}
 %
-Veličina \textit{buffer}-a (\verb*|buffer_size|) određuje koliko uzoraka zvuka se obrađuje odjednom. Veća veličina \textit{buffer}-a može poboljšati preciznost algoritma, ali također povećava računalnu složenost te time izaziva veće kašnjenje rezultata. Manje veličine smanjuju preciznost algoritma, ali i one mogu povećati kašnjenje rezultata ukoliko su premalene.
+Veličina \textit{buffer}-a (\lstinline[basicstyle=\ttfamily]|buffer_size|) određuje koliko uzoraka zvuka se obrađuje odjednom. Veća veličina \textit{buffer}-a može poboljšati preciznost algoritma, ali također povećava računalnu složenost te time izaziva veće kašnjenje rezultata. Manje veličine smanjuju preciznost algoritma, ali i one mogu povećati kašnjenje rezultata ukoliko su premalene.
 \begin{lstlisting}[language=C++, frame=single]
 constexpr size_t BUFFER_SIZE = 4096;
 \end{lstlisting}
@@ -524,7 +564,7 @@ constexpr uint16_t SAMPLE_RATE = 48000;
 
 \subsection{Minimalna i maksimalna frekvencija}
 %
-Minimalna (\verb*|min_freq|) i maksimalna (\verb*|max_freq|) frekvencija pretraživanja određuju raspon frekvencija koje algoritam pokušava detektirati. Ovi parametri su ključni za sužavanje pretrage na relevantne frekvencije, što poboljšava učinkovitost algoritma. U kodu, ti parametri određuju \verb*|tau_min| i \verb*|tau_max| vrijednosti koje definiraju granice pretrage najboljeg kašnjenja $\hat{\tau}$.
+Minimalna (\lstinline[basicstyle=\ttfamily]|min_freq|) i maksimalna (\lstinline[basicstyle=\ttfamily]|max_freq|) frekvencija pretraživanja određuju raspon frekvencija koje algoritam pokušava detektirati. Ovi parametri su ključni za sužavanje pretrage na relevantne frekvencije, što poboljšava učinkovitost algoritma. U kodu, ti parametri određuju \lstinline[basicstyle=\ttfamily]|tau_min| i \lstinline[basicstyle=\ttfamily]|tau_max| vrijednosti koje definiraju granice pretrage najboljeg kašnjenja $\hat{\tau}$.
 \begin{lstlisting}[language=C++, frame=single]
 // Najniza frekvencija gitare (E2 - 82.41 Hz)
 constexpr float MIN_FREQUENCY = 80.0f;
@@ -532,9 +572,9 @@ constexpr float MIN_FREQUENCY = 80.0f;
 constexpr float MAX_FREQUENCY = 1320.0f;
 \end{lstlisting}
 
-\subsection{Prag}
+\subsection{Prag pretrage}
 %
-Prag pretrage (\verb*|threshold|) omogućuje da se samo frekvencije čije vrijednosti CMNDF-a padnu ispod ovog praga smatraju validnim kandidatima za temeljnu frekvenciju. Ovaj parametar pomaže u eliminaciji šumova i netočnih detekcija.
+Prag pretrage (\lstinline[basicstyle=\ttfamily]|threshold|) omogućuje da se samo frekvencije čije vrijednosti CMNDF-a padnu ispod ovog praga smatraju validnim kandidatima za temeljnu frekvenciju. Ovaj parametar pomaže u eliminaciji šumova i netočnih detekcija.
 \begin{lstlisting}[language=C++, frame=single]
 constexpr float THRESHOLD = 0.1f;
 \end{lstlisting}
@@ -545,7 +585,7 @@ Nakon što se snimi zvuk note koju treba detektirati, vrijeme je za njegovu obra
 
 \subsection{Uspostava algoritma}
 %
-Detekcija visine tona implementirana je funkcijom \verb*|detectPitch()| koja uz navedene parametre iz prošlog odjeljka prima parametar \verb*|input_buffer|, tj. \textit{buffer} ulaznih uzoraka snimljenog zvuka.
+Detekcija visine tona implementirana je funkcijom \lstinline[basicstyle=\ttfamily]|detectPitch()| koja uz navedene parametre iz prošlog odjeljka prima parametar \lstinline[basicstyle=\ttfamily]|input_buffer|, tj. \textit{buffer} ulaznih uzoraka snimljenog zvuka.
 
 \begin{lstlisting}[language=C++, frame=single]
 float detectPitch(const float* input_buffer,
@@ -554,9 +594,9 @@ float detectPitch(const float* input_buffer,
 	float threshold);
 \end{lstlisting}
 
-Prije same obrade signala, uspostavljaju se varijable \verb*|tau_min| i \verb*|tau_max|, koje će kasnije poslužiti pretrazi visine tona unutar užeg raspona. Uz njih, \verb*|half_buffer_size| predstavljat će maksimalni vremenski odmak. 
+Prije same obrade signala, uspostavljaju se varijable \lstinline[basicstyle=\ttfamily]|tau_min| i \lstinline[basicstyle=\ttfamily]|tau_max|, koje će kasnije poslužiti pretrazi visine tona unutar užeg raspona. Maksimalni vremenski odmak bit će predstavljen s \lstinline[basicstyle=\ttfamily]|half_buffer_size|. 
 
-Budući da se obrada zvuka ne izvodi nad kontinuiranim signalom, nego nad slijedovima blokova signala, pretraga po odmacima u kašnjenju mora imati ograničenje. Kao česti kompromis između raspona kašnjenja i raspona u uzorcima, kao navedeno ograničenje uzima se pola \textit{buffer}-a. Ovime su raspon kašnjenja i raspon uzoraka jednaki pri svakom koraku obrade. Povezano s teorijom od ranije, \verb*|half_buffer_size| predstavlja veličinu vremenskog prozora $W$. Bitno je napomenuti da se u sklopu ovog rada ova vrijednost uvijek skalira s veličinom \verb*|input_buffer|-a te će uvijek biti upola te veličine.
+Budući da se obrada zvuka ne izvodi nad kontinuiranim signalom, nego nad slijedovima blokova signala, pretraga po odmacima u kašnjenju mora imati ograničenje. Kao česti kompromis između raspona kašnjenja i raspona u uzorcima, uzima se pola \textit{buffer}-a kao navedeno ograničenje. Ovime su raspon kašnjenja i raspon uzoraka jednaki pri svakom koraku obrade. Povezano s teorijom od ranije, \lstinline[basicstyle=\ttfamily]|half_buffer_size| predstavlja veličinu vremenskog prozora $W$. Bitno je napomenuti da se u sklopu ovog rada ova vrijednost uvijek skalira s veličinom \lstinline[basicstyle=\ttfamily]|input_buffer|-a te će uvijek biti upola te veličine.
 
 \begin{lstlisting}[language=C++, frame=single]
 int tau_min = sample_rate / max_freq;
@@ -567,7 +607,7 @@ int half_buffer_size = buffer_size / 2;
 
 \subsection{Funkcija razlike}
 %
-Implementacija funkcije razlike izvodi se nalik izrazu (8.8). Za svaki odmak u kašnjenju kvadrira se razlika između svakog koreliranog uzorka te zbraja i dodaje nizu \verb*|DF_buffer|. Prolaz kroz sve odmake kašnjenja predstavljen je iteracijom po \verb*|tau|, dok je prolaz po uzorcima implementiran kao unutarnja iteracija po \verb*|t|.
+Implementacija funkcije razlike izvodi se nalik izrazu (8.8). Za svaki odmak u kašnjenju kvadrira se razlika između svakog koreliranog uzorka te zbraja i dodaje nizu \lstinline[basicstyle=\ttfamily]|DF_buffer|. Prolaz kroz sve odmake kašnjenja predstavljen je iteracijom po \lstinline[basicstyle=\ttfamily]|tau|, dok je prolaz po uzorcima implementiran kao unutarnja iteracija po \lstinline[basicstyle=\ttfamily]|t|.
 
 \begin{lstlisting}[language=C++, frame=single]
 // Izracunaj DF
@@ -583,7 +623,7 @@ for (int tau = 0; tau < half_buffer_size; tau++) {
 }
 \end{lstlisting}
 
-Izvršavanjem ovog dijela koda, \verb*|DF_buffer| na svakom indeksu sadrži izračunatu funkciju razlike, ekvivalentno izrazu (8.8).	
+Izvršavanjem ovog dijela koda, \lstinline[basicstyle=\ttfamily]|DF_buffer| na svakom indeksu sadrži izračunatu funkciju razlike, ekvivalentno izrazu (8.8).	
 
 \subsection{CMNDF}
 %
@@ -601,13 +641,13 @@ for (int tau = 1; tau < half_buffer_size; tau++) {
 }
 \end{lstlisting}
 
-Kao rezultat ovog dijela koda, \verb*|CMNDF_buffer| sadržavat će vrijednost funkcije CMNDF za svaki odmak u kašnjenju u rasponu od 0 do \verb*|half_buffer_size|.
+Kao rezultat ovog dijela koda, \lstinline[basicstyle=\ttfamily]|CMNDF_buffer| sadržavat će vrijednost funkcije CMNDF za svaki odmak u kašnjenju u rasponu od 0 do \lstinline[basicstyle=\ttfamily]|half_buffer_size|.
 
 \subsection{Odabir najboljeg kandidata}
 %
-Zadnji korak u detekciji visine tona bit će iteracija kroz odmake kašnjenja u rasponu od \verb*|tau_min| i \verb*|tau_max| koji su ranije definirani. U ovom djelu koda dolazi do male izmjene u metodi što je bila spomenuta u teoriji.
+Zadnji korak u detekciji visine tona bit će iteracija kroz odmake kašnjenja u rasponu od \lstinline[basicstyle=\ttfamily]|tau_min| i \lstinline[basicstyle=\ttfamily]|tau_max| koji su ranije definirani. U ovom djelu koda dolazi do male izmjene u metodi što je bila spomenuta u teoriji.
 
-Kako bi se izabrao najbolji kandidat za odmak kašnjenja ($\hat{\tau}$), njegova vrijednost CMNDF mora biti manja od zadanog praga (\verb*|threshold|) i manja od svih ostalih vrijednosti CMNDF-a. Ukoliko takvog kandidata nema, algoritam neće izabrati nijednog kako algoritam ne bi detektirao krive visine tona. Ovime se nastoji predstaviti detektirane visine tona s većim pouzdanjem te osigurati jasniji i konzistentniji ispis korisniku.
+Kako bi se izabrao najbolji kandidat za odmak kašnjenja ($\hat{\tau}$), njegova vrijednost CMNDF mora biti manja od zadanog praga (\lstinline[basicstyle=\ttfamily]|threshold|) i manja od svih ostalih vrijednosti CMNDF-a. U slučaju takvog kandidata nema, algoritam neće izabrati nijednog kako algoritam ne bi detektirao krive visine tona. Ovime se nastoji predstaviti detektirane visine tona s većom pouzdanosti te osigurati jasniji i konzistentniji ispis korisniku.
 
 \begin{lstlisting}[language=C++, frame=single]
 // Pronadi najboljeg kandidata za visinu tona
@@ -626,7 +666,7 @@ delete[] CMNDF_buffer;
 return best_pitch;
 \end{lstlisting}
 
-Konačno, funkcija \verb*|detectPitch()| vraća visinu tona \verb*|best_pitch|. Ukoliko nema kandidata za visinu tona, funkcija vraća vrijednost -1. Sljedeći isječak koda prikazuje funkciju u cijelosti:
+Konačno, funkcija \lstinline[basicstyle=\ttfamily]|detectPitch()| vraća visinu tona \lstinline[basicstyle=\ttfamily]|best_pitch|. Ako nema kandidata za visinu tona, funkcija vraća vrijednost -1. Sljedeći isječak koda prikazuje funkciju u cijelosti:
 
 \begin{lstlisting}[language=C++, frame=single]
 //// ALGORITAM ZA PREPOZNAVANJE VISINE TONA:
@@ -681,13 +721,13 @@ float detectPitch(const float* input_buffer, int buffer_size,
 
 \section{Mapiranje note}
 %
-Funkcija \verb*|getNoteFromPitch()| za jedini parametar prima visinu tona temeljem koje će izračunati najbližu notu do preciznosti polutona.
+Funkcija \lstinline[basicstyle=\ttfamily]|getNoteFromPitch()| za jedini parametar prima visinu tona temeljem koje će izračunati najbližu notu do preciznosti polutona.
 
 \begin{lstlisting}[language=C++, frame=single]
 std::string getNoteFromPitch(float pitch);
 \end{lstlisting}
 
-Niz \textit{string}-ova \verb*|note_names| sadrži 12 imena za svaki poluton oktave u kromatskoj ljestvici. Kako bi se visina tona pripojila nekom od imena u nizu, prvo je potrebno preformulirati visinu tona u broj indeksa pripadnog imena.
+Niz \textit{string}-ova \lstinline[basicstyle=\ttfamily]|note_names| sadrži 12 imena za svaki poluton oktave u kromatskoj ljestvici. Kako bi se visina tona pripojila nekom od imena u nizu, prvo je potrebno preformulirati visinu tona u broj indeksa pripadnog imena.
 
 U ranijim poglavljima napomenuto je da se visine tona nota računaju relativno koncertnoj visini tona. Koncertna visina tona $A_4$ hardkodirana je na 440 Hz, a MIDI (eng. \textit{Musical Instrument Digital Interface}) standard za tu notu predstavljen je brojem 69.\cite{inspiredacousticsMIDINote} Iz izraza (3.1) moguće je izvesti formulu za izračun visine tona note kao:
 
@@ -717,11 +757,11 @@ std::string getNoteFromPitch(float pitch) {
 }
 \end{lstlisting}
 
-Konačno, aplikacija funkcijom \verb*|getNoteFromPitch()| vraća detektiranu notu u obliku \textit{string}-a.
+Konačno, aplikacija funkcijom \lstinline[basicstyle=\ttfamily]|getNoteFromPitch()| vraća detektiranu notu u obliku \textit{string}-a.
 
 \section{Funkcija povratnog poziva}
 %
-Navedene dvije funkcije za detekciju visine tona \verb*|getPitch()| i mapiranje nota \verb*|getNoteFromPitch()| pozivaju se unutar funkcije povratnog poziva \verb*|paCallback()|. Uz to se radi provjera za detekciju te se samo ispisuju note s detektiranom visinom tona.
+Navedena funkcija za detekciju visine tona \lstinline[basicstyle=\ttfamily]|getPitch()| i funkcija za mapiranje nota \lstinline[basicstyle=\ttfamily]|getNoteFromPitch()| pozivaju se u funkciji povratnog poziva \lstinline[basicstyle=\ttfamily]|paCallback()|. Uz to se radi provjera za detekciju te se samo ispisuju note s detektiranom visinom tona.
 
 \begin{lstlisting}[language=C++, frame=single]
 //// FUNKCIJA POVRATNOG POZIVA PORTAUDIO-A:
@@ -746,11 +786,11 @@ int paCallback(const void* input_buffer, void* output_buffer,
 
 \section{Primjer rada}
 %
-Kao primjer za demonstraciju, aplikacija se može testirati sviranjem žica gitare. Sviranjem gornje $E_2$ žice, aplikacija će snimiti audio signal u slijednim blokovima duljine \verb*|BUFFER_SIZE = 4096|, po \verb*|SAMPLE_RATE = 48000| uzoraka u sekundi.
+Kao primjer za demonstraciju, aplikacija se može testirati sviranjem žica gitare. Sviranjem gornje $E_2$ žice, aplikacija će snimiti audio signal u slijednim blokovima duljine \lstinline[basicstyle=\ttfamily]|BUFFER_SIZE = 4096|, po \lstinline[basicstyle=\ttfamily]|SAMPLE_RATE = 48000| uzoraka u sekundi.
 
-Ako se frekvencije ograniče na raspon gitare (od približno 80 Hz do 1320 Hz), raspon odmaka kašnjenja \verb*|tau| tijekom pretrage bit će od 36 do 600. Nakon izračuna DF i CMNDF minimuma, jednom od pretraga kandidata izabire se \verb*|tau = 582|. Frekvencija zatim se računa po izrazu (8.4) kao \verb*|48000 / 582 = 82.47|, što je približna visina tona odsvirane žice $E_2$ koja se traži, preciznije 82.41 Hz.
+Ako se frekvencije ograniče na raspon gitare (od približno 80 Hz do 1320 Hz), raspon odmaka kašnjenja \lstinline[basicstyle=\ttfamily]|tau| tijekom pretrage bit će od 36 do 600. Nakon izračuna DF i CMNDF minimuma, jednom od pretraga kandidata izabire se \lstinline[basicstyle=\ttfamily]|tau = 582|. Frekvencija zatim se računa prema izrazu (8.4) kao \lstinline[basicstyle=\ttfamily]|48000/582 = 82.47|, što je približna visina tona odsvirane žice $E_2$ koja se traži, preciznije 82.41 Hz.
 
-Nakon detekcije visine tona, nota se mapira izračunom njenog MIDI broja i oktave. Izračunom \verb*|note_MIDI| dobiva se broj 40, a ostatak dijeljenja s 12 daje broj indeksa 4. Kako indeksi kreću od 0, traži se peti član u nizu \verb*|note_names|, koji je upravo ime "E". Jedino što sad preostaje je izračunati oktavu, koja ispadne broj 2.
+Nakon detekcije visine tona, nota se mapira izračunom njenog MIDI broja i oktave. Izračunom \lstinline[basicstyle=\ttfamily]|note_MIDI| dobiva se broj 40, a ostatak dijeljenja s 12 daje broj indeksa 4. Kako indeksi kreću od 0, traži se peti član u nizu \lstinline[basicstyle=\ttfamily]|note_names|, koji je upravo ime "E". Jedino što sad preostaje je izračunati oktavu, koja ispadne broj 2.
 
 Konačno, na zaslon se ispisuje detektirana nota "E2", zajedno s njenom detektiranom visinom tona "82.47 Hz":
 
@@ -762,11 +802,11 @@ Konačno, na zaslon se ispisuje detektirana nota "E2", zajedno s njenom detektir
 
 \chapter{Zaključak}
 %Zaključak.
-Digitalna obrada signala predstavlja širok opseg područja informacijskih tehnologija, od jednostavne obrade zvuka u glazbi do telekomunikacija u satelitskoj industriji. Algoritmi za obradu signala poput FFT razvijaju se i nadograđuju od druge polovice 20. stoljeća te mogu biti korišteni za rješavanje raznovrsnih problema.
+Digitalna obrada signala predstavlja širok opseg područja informacijskih tehnologija, od jednostavne obrade zvuka u glazbi do telekomunikacija u satelitskoj industriji. Algoritmi za obradu signala poput FFT razvijaju se i nadograđuju od druge polovice 20. stoljeća te mogu biti korišteni za rješavanje raznovrsnih problema gdje je potrebo provesti analizu frekvencijskog spektra u signalu.
 
 U ovom radu istraženi su teoretski i praktični aspekti detekcije glazbenih nota analizom frekvencija. Prolaskom kroz osnovne pojmove zvuka i glazbe kao što su frekvencije, harmonici i oktave, uz njihovo ponašanje na primjeru gitare, cilj je bio jasno demonstrirati proces detekcije nota.
 
-Kao praktična demonstracija razvijena je aplikacija koja koristi korake YIN algoritma kako bi precizno detektirala visine tona u stvarnom vremenu. Razmatranjem ključnih parametara algoritma kao što su frekvencija uzorkovanja i veličina \textit{buffer}-a može se zaključiti da svaki od njih utječe na kompromis između preciznosti i brzine detekcije te njihove vrijednosti ovise o namjeni aplikacije. Parametri poput minimalne i maksimalne frekvencije te praga pretrage omogućavaju da se apriornim znanjem smanji vrijeme pretrage i poveća pouzdanost rezultata.
+Kao praktična demonstracija razvijena je aplikacija koja koristi koncepte YIN algoritma kako bi precizno detektirala visine tona u stvarnom vremenu. Razmatranjem ključnih parametara algoritma kao što su frekvencija uzorkovanja i veličina \textit{buffer}-a može se zaključiti da svaki od njih utječe na kompromis između preciznosti i brzine detekcije te njihove vrijednosti ovise o namjeni aplikacije. Parametri poput minimalne i maksimalne frekvencije te praga pretrage omogućavaju da se apriornim znanjem smanji vrijeme pretrage i poveća pouzdanost rezultata.
 
 Implementacija algoritma i primjena informacija iz teorije pokazala je kako digitalna obrada signala može učinkovito pomoći u analizi i interpretaciji glazbenih signala te time glazbenicima pružiti korisne alate. Daljnje istraživanje može se usmjeriti na ubrzanje i preciznost algoritma te proširenje raspona nota koje aplikacija može detektirati. 
 
