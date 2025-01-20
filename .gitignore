@@ -8,6 +8,7 @@ dipl/
 *.vcxproj
 *.vcxproj.*
 NoteSense/x64/
+x64/
 
 
 # User-specific files
