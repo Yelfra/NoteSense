@@ -6,6 +6,7 @@
 # Yelfra ignores
 dipl/
 *.vcxproj
+*.vcxproj.*
 NoteSense/x64/
 
 
