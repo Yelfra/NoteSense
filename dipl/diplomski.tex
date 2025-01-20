@@ -346,7 +346,7 @@ gdje je temeljna frekvencija izražena $f_{fundemental}$, a $f_{sample}$ predsta
 	\label{fig}
 \end{figure}
 
-Autokorelacija je korisna za identifikaciju ponavljajućih obrazaca u signalu, što je ključno za detekciju temeljne frekvencije. Za perfektno periodnične signale, ACF će davati točne rezultate u detekciji temeljne frekvencije. Unatoč svojoj korisnosti, funkcija ACF je sama po sebi nedovoljna za preciznu detekciju temeljne frekvencije u složenim zvučnim signalima.
+Autokorelacija je korisna za identifikaciju ponavljajućih obrazaca u signalu, što je ključno za detekciju temeljne frekvencije. Za perfektno periodične signale, ACF će davati točne rezultate u detekciji temeljne frekvencije. Unatoč svojoj korisnosti, funkcija ACF je sama po sebi nedovoljna za preciznu detekciju temeljne frekvencije u složenim zvučnim signalima.
 
 Problem metode autokorelacije je što ne uzima u obzir odstupanja između vrijednosti originalnog i zakašnjelog signala, nego samo predznak tih vrijednosti. Implementacija funkcije ACF kao takve je osjetljiva na promjene u amplitudi signala. Porast amplitude signala kroz vrijeme povećavat će i produkt vrijednosti signala ($f(t) \cdot f(t + \tau)$) te će algoritam naivno birati veća kašnjenja kao najbolje kašnjenje $\hat{\tau}$. Smanjenje amplituda signala imat će suprotan učinak. Ovo je problematično jer vodi do pogreške gdje algoritam bira više, odnosno niže frekvencije umjesto stvarne temeljne frekvencije.
 
@@ -438,7 +438,7 @@ Posljednji dodatak CMNDF-u je uvođenje praga (eng. \textit{threshold}). Uvođen
 	\hat{\tau} =
 	\begin{cases}
 		\mathrm{min} \ \tau \mid \mathrm{CMNDF}(\tau) < \mathrm{threshold} & \exists \tau \ \mathrm{CMNDF}(\tau) < \mathrm{threshold} \\
-		\underset{\tau}{\mathrm{argmin}} (\mathrm{CMNDF}(\tau)) & \forall \tau \ \mathrm{CMNDF}(\tau) >= \mathrm{threshold}
+		\underset{\tau}{\mathrm{argmin}} (\mathrm{CMNDF}(\tau)) & \forall \tau \ \mathrm{CMNDF}(\tau) \geq \mathrm{threshold}
 	\end{cases}
 \end{equation}
  
